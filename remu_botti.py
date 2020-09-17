@@ -64,18 +64,18 @@ async def on_command_error(ctx, error):
         await ctx.send("Anna kaikki argumentit pls ;_;")
 
 
-@client.command()
-@commands.has_permissions(administrator=True)
-async def load(ctx, extension):
-    client.load_extension(f"cogs.{extension}")
-    ctx.send("Loaded cogs")
-
-
-@client.command()
-@commands.has_permissions(administrator=True)
-async def unload(ctx, extension):
-    client.unload_extension(f"cogs.{extension}")
-    ctx.send("Unloaded cogs")
+# @client.command()
+# @commands.has_permissions(administrator=True)
+# async def load(ctx, extension):
+#     client.load_extension(f"cogs.{extension}")
+#     ctx.send("Loaded cogs")
+#
+#
+# @client.command()
+# @commands.has_permissions(administrator=True)
+# async def unload(ctx, extension):
+#     client.unload_extension(f"cogs.{extension}")
+#     ctx.send("Unloaded cogs")
 
 
 @client.event
