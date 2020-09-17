@@ -25,6 +25,7 @@ async def on_message(message):
             await message.channel.send("viu viu")
         elif 'remu' in message.content.lower():
             await message.channel.send("woof")
+    await client.process_commands(message)
 
 
 @client.command()
