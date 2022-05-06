@@ -83,7 +83,7 @@ async def on_command_error(ctx, error):
 async def on_ready():
     await client.change_presence(status=discord.Status.online)
     change_status.start()
-    print("Remu is ready.")
+    print("Remu-botti is operational.")
 
 
 @client.command()
@@ -131,16 +131,12 @@ async def remuh(ctx, *, question):
                  "Tulevaisuudennäkymä hyvä.",
                  "Joo.",
                  "Merkit osoittavat kyllä.",
-                 "Vastaus sumuinen, yritä uudelleen.",
-                 "Kysy myöhemmin uudelleen.",
-                 "En kerro sinulle nyt.",
-                 "En voi ennustaa nyt.",
-                 "Keskity ja kysy uudelleen.",
                  "Älä luota siihen.",
                  "Vastaukseni on ei.",
                  "Lähteeni sanovat ei.",
                  "Näkymät eivät ole niin hyvät.",
-                 "Hyvin epätodennäköistä."]
+                 "Hyvin epätodennäköistä.",
+                 "dunno lelol"]
     await ctx.send(f"Kysymys: {question}\nVastaus: {random.choice(responses)}")
 
 
