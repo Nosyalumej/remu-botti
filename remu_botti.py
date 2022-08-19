@@ -5,7 +5,9 @@ import praw
 from discord.ext import commands, tasks
 from itertools import cycle
 
-client = commands.Bot(command_prefix='/')
+intents = discord.Intents.default()
+intents.members = True
+client = commands.Bot(command_prefix='!', intents=intents)
 status = cycle(["Ruf Ruf", "Viu Viu", "Bark Bark", "Licking balls"])
 reddit = praw.Reddit(client_id="qktlYkc_B9XuBA",
                      client_secret="6HBKxc1Hz61n4EYsEFn18K7MXQo",
