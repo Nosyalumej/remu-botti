@@ -3,6 +3,18 @@ import random
 from discord.ext import commands, tasks
 from itertools import cycle
 import logging
+import os
+from dotenv import load_dotenv
+
+# Discord API Token
+load_dotenv()
+token = os.getenv('Discord_API_Token')
+
+# Reddit API
+reddit_client_id = os.getenv('Reddit_Client_ID')
+reddit_client_secret = os.getenv('Reddit_Client_Secret')
+reddit_user= os.getenv('Reddit_Username')
+reddit_password = os.getenv('Reddit_Password')
 
 # Logging
 logging.basicConfig(
@@ -20,11 +32,12 @@ client = commands.Bot(command_prefix='/', intents=intents)
 
 status = cycle(["Ruf Ruf", "Viu Viu", "Bark Bark", "Licking balls"])
 
-""" reddit = praw.Reddit(client_id="qktlYkc_B9XuBA",
-                     client_secret="6HBKxc1Hz61n4EYsEFn18K7MXQo",
+# Reddit API cost money, so I wont use it.
+""" reddit = praw.Reddit(client_id=reddit_client_id,
+                     client_secret=reddit_client_secret,
                      user_agent="Remu botti",
-                     username="Z8zeR",
-                     password="Subaru129") """
+                     username=reddit_user,
+                     password=reddit_password) """
 
 # Emojit
 BIG_THINK = "<:big_think:1274396489686323300>"
@@ -172,4 +185,4 @@ async def change_status():
 #     if filename.endswith('.py'):
 #         client.load_extension(f"cogs.{filename[:-3]}")
 
-client.run('NzU2MTE4MDIyMjM3OTc4NzE1.X2NLyA.GBlNY4eNk1YVH6ewveutr-zfny4')
+client.run(token)
