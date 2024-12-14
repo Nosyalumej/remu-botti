@@ -1,20 +1,49 @@
 import discord
 import random
-import os
-import praw
 from discord.ext import commands, tasks
 from itertools import cycle
+import logging
+import os
+from dotenv import load_dotenv
+
+# Discord API Token
+load_dotenv()
+token = os.getenv('Discord_API_Token')
+
+# Reddit API
+reddit_client_id = os.getenv('Reddit_Client_ID')
+reddit_client_secret = os.getenv('Reddit_Client_Secret')
+reddit_user= os.getenv('Reddit_Username')
+reddit_password = os.getenv('Reddit_Password')
+
+# Logging
+logging.basicConfig(
+    format="{asctime} - {levelname} - {message}",
+    style="{",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    level=logging.INFO
+)
 
 intents = discord.Intents.default()
+intents.message_content = True
 intents.members = True
-client = commands.Bot(command_prefix='/', intents=intents)
-status = cycle(["Ruf Ruf", "Viu Viu", "Bark Bark", "Licking balls"])
-reddit = praw.Reddit(client_id="qktlYkc_B9XuBA",
-                     client_secret="6HBKxc1Hz61n4EYsEFn18K7MXQo",
-                     user_agent="Remu botti",
-                     username="Z8zeR",
-                     password="Subaru129")
 
+client = commands.Bot(command_prefix='/', intents=intents)
+
+status = cycle(["Ruf Ruf", "Viu Viu", "Bark Bark", "Licking balls"])
+
+# Reddit API cost money, so I wont use it.
+""" reddit = praw.Reddit(client_id=reddit_client_id,
+                     client_secret=reddit_client_secret,
+                     user_agent="Remu botti",
+                     username=reddit_user,
+                     password=reddit_password) """
+
+# Emojit
+BIG_THINK = "<:big_think:1274396489686323300>"
+NAUTIN = "<:nautin:1195694506780151818>"
+VITUN_KALJU = "<:vitun_kalju:1165679237500514355>"
+KALJU_VITUN = "<:kalju_vitun:1281950244556374036>"
 
 @client.event
 async def on_message(message):
@@ -25,40 +54,41 @@ async def on_message(message):
             await message.channel.send("bark")
         elif 'uli' in message.content.lower():
             await message.channel.send("viu viu")
-        elif 'remu' in message.content.lower():
-            await message.channel.send("woof")
+        elif 'kalju' in message.content.lower():
+            await message.add_reaction(VITUN_KALJU)
+        elif 'henry' in message.content.lower():
+            await message.add_reaction(KALJU_VITUN)
     await client.process_commands(message)
 
 
 @client.command()
 async def meme(ctx):
-    submission = reddit.subreddit('memes').random()
-    await ctx.send(submission.title)
-    await ctx.send(submission.url)
+    # submission = reddit.subreddit('memes').random()
+    await ctx.send(f"Reddit API maksaa rahaa, joten en voi käyttää sitä.\nUutta ratkaisua etsitään. {NAUTIN}")
 
 
 @client.command()
 async def perse(ctx):
-    submission = reddit.subreddit('ass').random()
-    await ctx.send(submission.url)
+    # submission = reddit.subreddit('ass').random()
+    await ctx.send(f"Reddit API maksaa rahaa, joten en voi käyttää sitä.\nUutta ratkaisua etsitään. {NAUTIN}")
 
 
 @client.command()
 async def tissit(ctx):
-    submission = reddit.subreddit('boobs').random()
-    await ctx.send(submission.url)
+    # submission = reddit.subreddit('boobs').random()
+    await ctx.send(f"Reddit API maksaa rahaa, joten en voi käyttää sitä.\nUutta ratkaisua etsitään. {NAUTIN}")
 
 
 @client.command()
 async def doggo(ctx):
-    submission = reddit.subreddit('rarepuppers').random()
-    await ctx.send(submission.url)
+    # submission = reddit.subreddit('rarepuppers').random()
+    await ctx.send(f"Reddit API maksaa rahaa, joten en voi käyttää sitä.\nUutta ratkaisua etsitään. {NAUTIN}")
 
 
 @client.command()
 async def catto(ctx):
-    submission = reddit.subreddit('lolcats').random()
-    await ctx.send(submission.url)
+    # submission = reddit.subreddit('lolcats').random()
+    await ctx.send(f"Reddit API maksaa rahaa, joten en voi käyttää sitä.\nUutta ratkaisua etsitään. {NAUTIN}")
 
 
 @client.event
@@ -67,6 +97,7 @@ async def on_command_error(ctx, error):
         await ctx.send("Anna kaikki argumentit pls ;_;")
 
 
+# Mitä vittua nämä edes ovat?
 # @client.command()
 # @commands.has_permissions(administrator=True)
 # async def load(ctx, extension):
@@ -85,7 +116,7 @@ async def on_command_error(ctx, error):
 async def on_ready():
     await client.change_presence(status=discord.Status.online)
     change_status.start()
-    print("Remu-botti is operational.")
+    logging.info("Remu-botti is operational.")
 
 
 @client.command()
@@ -138,8 +169,11 @@ async def remuh(ctx, *, question):
                  "Lähteeni sanovat ei.",
                  "Näkymät eivät ole niin hyvät.",
                  "Hyvin epätodennäköistä.",
-                 "dunno lelol"]
-    await ctx.send(f"Kysymys: {question}\nVastaus: {random.choice(responses)}")
+                 "dunno lelol <:big_think:1274396489686323300>"]
+    if 'kalju' in question.lower():
+        await ctx.send(f"{VITUN_KALJU}")
+    else:
+        await ctx.send(f"Kysymys: {question}\nVastaus: {random.choice(responses)}")
 
 
 @tasks.loop(minutes=2)
@@ -151,4 +185,4 @@ async def change_status():
 #     if filename.endswith('.py'):
 #         client.load_extension(f"cogs.{filename[:-3]}")
 
-client.run('NzU2MTE4MDIyMjM3OTc4NzE1.X2NLyA.GBlNY4eNk1YVH6ewveutr-zfny4')
+client.run(token)

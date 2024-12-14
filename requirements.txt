@@ -1,5 +1,2 @@
-git+https://github.com/Rapptz/discord.py.git
-dnspython
-PyNaCl
-praw
-async-timeout
+discord.py[voice]
+python-dotenv
