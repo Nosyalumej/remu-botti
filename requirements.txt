@@ -2,3 +2,4 @@ discord.py[voice]
 python-dotenv
 mkdocs-material
 mkdocs-awesome-pages-plugin
+pymdown-extensions
