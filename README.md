@@ -1,5 +1,7 @@
 # Remu Bot
 Simple bot that I made for our group discord to fuck with. It is named after my dog because it's funny.
+## Wiki
+https://nosyalumej.github.io/remu-botti/
 
 ## Features
 > [!CAUTION]
