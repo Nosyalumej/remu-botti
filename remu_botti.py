@@ -54,6 +54,9 @@ async def on_message(message):
             await message.channel.send("bark")
         elif 'uli' in message.content.lower():
             await message.channel.send("viu viu")
+        elif 'kalju' in message.content.lower() and 'henry' in message.content.lower():
+            await message.add_reaction(VITUN_KALJU)
+            await message.add_reaction(KALJU_VITUN)
         elif 'kalju' in message.content.lower():
             await message.add_reaction(VITUN_KALJU)
         elif 'henry' in message.content.lower():
