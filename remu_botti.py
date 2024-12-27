@@ -3,10 +3,6 @@ import random
 from discord.ext import commands, tasks
 from itertools import cycle
 import logging
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8c32a9e (Refactor to use environment variables for API tokens and credentials)
 import os
 from dotenv import load_dotenv
 
@@ -19,11 +15,6 @@ reddit_client_id = os.getenv('Reddit_Client_ID')
 reddit_client_secret = os.getenv('Reddit_Client_Secret')
 reddit_user= os.getenv('Reddit_Username')
 reddit_password = os.getenv('Reddit_Password')
-<<<<<<< HEAD
-=======
->>>>>>> bdb96dd (Add logging functionality and update message handling for reactions)
-=======
->>>>>>> 8c32a9e (Refactor to use environment variables for API tokens and credentials)
 
 # Logging
 logging.basicConfig(
@@ -36,33 +27,11 @@ logging.basicConfig(
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
-<<<<<<< HEAD
 
 client = commands.Bot(command_prefix='/', intents=intents)
 
 status = cycle(["Ruf Ruf", "Viu Viu", "Bark Bark", "Licking balls"])
 
-# Reddit API cost money, so I wont use it.
-""" reddit = praw.Reddit(client_id=reddit_client_id,
-                     client_secret=reddit_client_secret,
-                     user_agent="Remu botti",
-                     username=reddit_user,
-                     password=reddit_password) """
-
-=======
-
-client = commands.Bot(command_prefix='/', intents=intents)
-
-status = cycle(["Ruf Ruf", "Viu Viu", "Bark Bark", "Licking balls"])
-
-# Reddit API cost money, so I wont use it.
-""" reddit = praw.Reddit(client_id=reddit_client_id,
-                     client_secret=reddit_client_secret,
-                     user_agent="Remu botti",
-                     username=reddit_user,
-                     password=reddit_password) """
-
->>>>>>> bdb96dd (Add logging functionality and update message handling for reactions)
 # Emojit
 BIG_THINK = "<:big_think:1274396489686323300>"
 NAUTIN = "<:nautin:1195694506780151818>"
@@ -78,31 +47,16 @@ async def on_message(message):
             await message.channel.send("bark")
         elif 'uli' in message.content.lower():
             await message.channel.send("viu viu")
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         elif 'remu' in message.content.lower():
             await message.channel.send("woof")
-=======
-=======
         elif 'kalju' in message.content.lower() and 'henry' in message.content.lower():
             await message.add_reaction(VITUN_KALJU)
             await message.add_reaction(KALJU_VITUN)
->>>>>>> 230a81b (Add reactions for combined 'kalju' and 'henry' mentions in message handler)
-=======
->>>>>>> bdb96dd (Add logging functionality and update message handling for reactions)
-=======
-        elif 'kalju' in message.content.lower() and 'henry' in message.content.lower():
-            await message.add_reaction(VITUN_KALJU)
-            await message.add_reaction(KALJU_VITUN)
->>>>>>> 230a81b (Add reactions for combined 'kalju' and 'henry' mentions in message handler)
         elif 'kalju' in message.content.lower():
             await message.add_reaction(VITUN_KALJU)
         elif 'henry' in message.content.lower():
             await message.add_reaction(KALJU_VITUN)
     await client.process_commands(message)
->>>>>>> bdb96dd (Add logging functionality and update message handling for reactions)
 
 
 @client.command()
@@ -141,8 +95,6 @@ async def on_command_error(ctx, error):
         await ctx.send("Anna kaikki argumentit pls ;_;")
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 @client.command()
 @commands.has_permissions(administrator=True)
 async def load(ctx, extension):
@@ -155,9 +107,7 @@ async def load(ctx, extension):
 async def unload(ctx, extension):
     client.unload_extension(f"cogs.{extension}")
     ctx.send("Unloaded cogs")
-=======
-=======
->>>>>>> bdb96dd (Add logging functionality and update message handling for reactions)
+
 # Mitä vittua nämä edes ovat?
 # @client.command()
 # @commands.has_permissions(administrator=True)
@@ -171,8 +121,6 @@ async def unload(ctx, extension):
 # async def unload(ctx, extension):
 #     client.unload_extension(f"cogs.{extension}")
 #     ctx.send("Unloaded cogs")
->>>>>>> bdb96dd (Add logging functionality and update message handling for reactions)
-
 
 @client.event
 async def on_ready():
