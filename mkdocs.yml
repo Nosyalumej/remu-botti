@@ -1,0 +1,70 @@
+site_name: 'Remu-botti Wiki'
+
+theme:
+  name: 'material'
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9ed785d (Add custom directory and logo to MkDocs configuration)
+  custom_dir: overrides
+  palette:
+    scheme: 'slate'
+  icon:
+    logo: PPemojis/remu-botti-logo
+  favicon: images/remu-botti-logo.png
+<<<<<<< HEAD
+=======
+  palette:
+    scheme: 'slate'
+>>>>>>> b68b48d (delete procfile, add feature to mkdocs.yml, added ci.yml to deploy to github pages)
+=======
+>>>>>>> 9ed785d (Add custom directory and logo to MkDocs configuration)
+
+markdown_extensions:
+  # Footnotes
+  - footnotes
+  # Code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  # Emojis
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+<<<<<<< HEAD
+<<<<<<< HEAD
+      options:
+        custom_icons:
+          - overrides/.icons
+=======
+>>>>>>> b68b48d (delete procfile, add feature to mkdocs.yml, added ci.yml to deploy to github pages)
+=======
+      options:
+        custom_icons:
+          - overrides/.icons
+>>>>>>> 9ed785d (Add custom directory and logo to MkDocs configuration)
+  # Checkboxes
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  # Admonitions
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+plugins:
+  # Navigation page ordering
+  - awesome-pages
+  - search
+
+copyright: |
+  Jesse Heikkinen in 2024.
